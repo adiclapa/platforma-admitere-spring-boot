@@ -47,7 +47,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'proiect-admitere'
+          app-name: 'admitere'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A96AFB3B43644FFC8113DF40963A89A4 }}
           package: '*.jar'
