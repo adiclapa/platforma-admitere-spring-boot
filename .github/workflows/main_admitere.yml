@@ -26,7 +26,7 @@ jobs:
     environment: dev
     steps:
     - uses: actions/checkout@master
-    - name: Set up JDK 17
+    - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
         java-version: ${{ env.JAVA_VERSION }}
@@ -37,6 +37,7 @@ jobs:
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/*.war'
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/*.jar'
         
+  # For more information on GitHub Actions for Azure, refer to https://github.com/Azure/Actions
   # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
