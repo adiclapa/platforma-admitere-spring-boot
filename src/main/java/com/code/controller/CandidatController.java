@@ -31,9 +31,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/candidat")
 public class CandidatController {
-    public static String UPLOAD_DIRECTORYCI = "D:\\Fac\\IP\\platforma-de-admitere\\src\\main\\resources\\pdfs\\buletine";
-    public static String UPLOAD_DIRECTORYDIP = "D:\\Fac\\IP\\platforma-de-admitere\\src\\main\\resources\\pdfs\\diplome";
-    public static String UPLOAD_DIRECTORYP = "D:\\Fac\\IP\\platforma-de-admitere\\src\\main\\resources\\pdfs\\certificate";
+    public static String UPLOAD_DIRECTORYCI = "..\\..\\..\\..\\resources\\pdfs\\buletine";
+    public static String UPLOAD_DIRECTORYDIP = "..\\..\\..\\..\\resources\\pdfs\\diplome";
+    public static String UPLOAD_DIRECTORYP = "..\\..\\..\\..\\resources\\pdfs\\certificate";
     @Autowired
     UserService appUserService;
     @Autowired
