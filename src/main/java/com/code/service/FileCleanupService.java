@@ -9,7 +9,7 @@ public class FileCleanupService {
 
     @Scheduled(fixedRate = 1000, initialDelay = 1000)
     public void recursiveDeleteFile(){
-        scheduledDetele(new File("D:\\Fac\\IP\\platforma-de-admitere\\src\\main\\resources\\pdfs"));
+        scheduledDetele(new File("..\\..\\..\\..\\main\\resources\\pdfs"));
     }
 
     public void scheduledDetele(File file){
