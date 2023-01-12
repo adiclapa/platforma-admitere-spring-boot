@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Title</title>
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/candidat">Admitere MTA</a>
+        <li class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/candidat/documente">
+                Documente
+            </a>
+        </li>
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/candidat/specializari">
+                Specializari
+            </a>
+        </li>
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/candidat">
+                Note
+            </a>
+        </li>
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/logout">
+                Logout
+            </a>
+        </li>
+        </li>
+    </div>
+</nav>
+<!--Navbar-->
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2 style="text-align: center">Incarcare documente pdf</h2>
+                <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                <form method="post" th:action="@{/candidat/upload}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <p>Carte de identitate</p>
+                        <input type="file" name="buletin"  class="form-control-file" accept="application/pdf, application/vnd.ms-excel">
+                        <br>
+                        <p>Diploma de bac</p>
+                        <input type="file" name="diploma1"  class="form-control-file" accept="application/pdf, application/vnd.ms-excel">
+                        <br>
+                        <p>Fotografie personala</p>
+                        <input type="file" name="poza"  class="form-control-file" accept="application/pdf, application/vnd.ms-excel">
+                        <br>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Upload image</button>
+                </form>
+                <span th:if="${msg != null}" th:text="${msg}"></span>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

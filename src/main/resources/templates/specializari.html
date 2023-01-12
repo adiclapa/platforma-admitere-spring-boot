@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Specializari</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #candidati {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #candidati td, #candidati th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #selectie {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #selectie td, #selectie th {
+            border: none;
+            padding: 8px;
+        }
+
+        .parent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #candidati tr:nth-child(even){background-color: #f2f2f2;}
+
+        #verificat tr:hover {background-color: #969696;}
+        #neverificat tr:hover {background-color: #969696;}
+        #candidati tr:hover {background-color: #969696;}
+
+        #candidati th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4c8cc1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/candidat">Admitere MTA</a>
+        <li class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/candidat/documente">
+                Documente
+            </a>
+        </li>
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/candidat/specializari">
+                Specializari
+            </a>
+        </li>
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/candidat">
+                Note
+            </a>
+        </li>
+        <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link active " aria-current="page" href="/logout">
+                Logout
+            </a>
+        </li>
+        </li>
+    </div>
+</nav>
+<!--Navbar-->
+<h1 style="text-align: center">Specializari</h1>
+<br />
+<table id="candidati">
+    <tr>
+        <th>Facultate</th>
+        <th>Denumire Specializare</th>
+        <th>Numar Locuri</th>
+    </tr>
+    <tr th:each="spec : ${specializari}" class="active-row">
+        <td th:text="${spec.facultate}"></td>
+        <td th:text="${spec.nume}"></td>
+        <td th:text="${spec.locuri}"></td>
+    </tr>
+</table>
+<br>
+<br>
+
+<div class="parent">
+<form th:action="@{/candidat/adaugare}" method="post" th:object="${form}" style="max-width: 350px;">
+    <fieldset>
+        <table id="selectie">
+            <tbody>
+            <tr th:each="optiunirequest , itemStat:*{optiuni}" class="active-row">
+
+                <td th:text="*{optiuni[__${itemStat.index}__].denumire}"></td>
+                <td><input type="hidden" th:field="*{optiuni[__${itemStat.index}__].specializare}" th:value="${itemStat.index}"/></td>
+                <td><select  th:field="*{optiuni[__${itemStat.index}__].ordine}">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                </td>
+            </tr>
+            </tbody>
+            <p>
+                <input type="submit" value="Inscrie optiuni" class="btn btn-primary" />
+            </p>
+        </table>
+    </fieldset>
+</form>
+</div>
+</body>
+</html>

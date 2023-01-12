@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Admin page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <style>
+        #candidati {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #neverificat {
+            background-color: #bce8b4 !important;
+        }
+
+        #verificat {
+            background-color: #e8b4b4 !important;
+        }
+
+        #candidati td, #candidati th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #candidati tr:nth-child(even){background-color: #f2f2f2;}
+
+        #verificat tr:hover {background-color: #969696;}
+        #neverificat tr:hover {background-color: #969696;}
+        #candidati tr:hover {background-color: #969696;}
+
+        #candidati th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4c8cc1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <p th:if="${adminMainError}" class="error">Error to load the home page</p>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/admin">Admitere MTA</a>
+            <li class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
+                <li class="nav-item d-flex justify-content-end">
+                    <a class="nav-link active " aria-current="page" href="/admiteri">Admiteri</a>
+                </li>
+                <li class="nav-item d-flex justify-content-end">
+                    <a class="nav-link active " aria-current="page" href="/register-page">Utilizatori noi</a>
+                </li>
+                <li class="nav-item d-flex justify-content-end">
+                    <a class="nav-link active " aria-current="page" href="/">Specializari</a>
+                </li>
+                <li class="nav-item d-flex justify-content-end">
+                    <a class="nav-link active " aria-current="page" href="/logout">Logout</a>
+                </li>
+        </div>
+    </nav>
+    <!--Navbar-->
+
+    <h1 style="text-align: center">Sesiune noua</h1>
+    <br>
+    <div class="container">
+        <form method="post" th:object="${user}">
+            <div class="form-group row mb-lg-5">
+                <div class="col-md-4 mt-5">
+                    <label for="start">Start</label>
+                    <div class="input-group date">
+                        <input type="date" class="datepicker-dropdown" id="start" autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-5">
+                    <label for="end">End</label>
+                    <div class="input-group date">
+                        <input type="date" class="datepicker-dropdown" id="end" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">SAVE</button>
+        </form>
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
